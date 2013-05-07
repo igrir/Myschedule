@@ -1,36 +1,13 @@
-<html>
-	<head>
-
-		<link rel="stylesheet" type="text/css" href="styles/style.css"/>
-
-	</head>
-
-	<body>
-
-		<div id="header-bar">
-			<div id="header-content">
-
-				<div class="kiri">
-					<img src="img/logo_small.png" width="20px"/>
-				</div>
-				<div class="kanan">
-					Hi <a href="#">RatnaAsri!</a> | <a href="#">Profil</a> | <a href="#">Logout</a>
-				</div>
-
-				<div class="clear"></div>
-			</div>				
-		</div>
-
 		<div id="content">
 
 
 			<div id="login">
 				<center>
 
-					<img src="img/logo.png"/>
+					<img src="<?php echo base_url()?>img/logo.png"/>
 					<br/><br/>
 				
-					<span class="judul">Tambah jadwal</span>
+					<span class="judul">Edit jadwal</span>
 					<br/>
 
 				</center>
@@ -58,22 +35,10 @@
 						<input type="text" class="input-form"/><br/>
 
 
-						<input type="submit" class="input-button" value="Tambah jadwal"/>
+						<input type="submit" class="input-button" value="Edit jadwal"/>
 					</form>
 
 				</div>
 				
-				<center>
-					<span class="info">
-						<a href="#">Anda pengguna baru? Daftar disini</a>
-					</span>
-				</center>
 
 			</div>
-
-		Myschedule 2013
-
-		</div>
-
-	</body>
-</html>

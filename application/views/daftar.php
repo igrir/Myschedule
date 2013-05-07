@@ -1,22 +1,13 @@
-<html>
-	<head>
-
-		<link rel="stylesheet" type="text/css" href="styles/style.css"/>
-
-	</head>
-
-	<body>
-
 		<div id="content">
 
 
 			<div id="login">
 				<center>
 
-					<img src="img/logo.png"/>
+					<img src="<?php echo base_url()?>img/logo.png"/>
 					<br/><br/>
 				
-					<span class="judul">Login</span>
+					<span class="judul">Daftar</span>
 					<br/>
 
 				</center>
@@ -28,7 +19,12 @@
 						<input type="text" class="input-form"/><br/>
 						<span class="abu">Password</span><br/>
 						<input type="text" class="input-form"/><br/>
-						<input type="submit" class="input-button" value="login"/>
+						<span class="abu">Password</span><br/>
+						<input type="text" class="input-form"/><br/>
+						<span class="abu">Bio</span><br/>
+						<textarea class="input-form"></textarea><br/>
+
+						<input type="submit" class="input-button" value="daftar"/>
 					</form>
 				</div>
 				
@@ -40,9 +36,3 @@
 
 			</div>
 
-		Myschedule 2013
-
-		</div>
-
-	</body>
-</html>

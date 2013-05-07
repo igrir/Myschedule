@@ -13,9 +13,16 @@
 		}
 
 
-		//halaman utama
+		/*
+		 *  PAGE
+		 *
+		 *	Halaman Utama
+		 */
 		public function index(){
-			$this->load->view("login");
+			$data['title'] = "My Schedule";
+			$this->load->view("template/header", $data);
+			$this->load->view("login", $data);
+			$this->load->view("template/footer", $data);
 		}
 	}
 ?>

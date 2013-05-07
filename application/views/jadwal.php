@@ -1,23 +1,3 @@
-<html>
-	<head>
-
-		<link rel="stylesheet" type="text/css" href="styles/style.css"/>
-
-	</head>
-
-	<body>
-
-		<div id="header-bar">
-			<div id="header-content">
-				<div class="kiri">
-					<img src="img/logo_small.png" width="20px"/>
-				</div>
-				<div class="kanan">
-					Hi <a href="#">RatnaAsri!</a> | <a href="#">Profil</a> | <a href="#">Logout</a>
-				</div>
-			</div>				
-		</div>
-
 		<div id="content">
 
 			<div id="login">
@@ -26,7 +6,7 @@
 
 					<div id="profil-kiri" class="kiri">
 						<div id="profil-photo">
-							<img src="photo/ratna.jpg" width="80px" height="80px"/>
+							<img src="<?php echo base_url()?>photo/ratna.jpg" width="80px" height="80px"/>
 						</div>
 					</div>
 					
@@ -221,17 +201,10 @@
 				<div id="friend-list">
 
 					<a class="info" href="#">
-						<img src="photo/ratna.jpg" width="40px" height="40px"/>
+						<img src="<?php echo base_url()?>photo/ratna.jpg" width="40px" height="40px"/>
 						<span>@ratnaasri</span>
 					</a>
 					
 				</div>
 
 			</div>	
-
-		Myschedule 2013
-
-		</div>
-
-	</body>
-</html>

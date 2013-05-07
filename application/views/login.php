@@ -1,11 +1,3 @@
-<html>
-	<head>
-
-		<link rel="stylesheet" type="text/css" href="<?php echo base_url()?>styles/style.css"/>
-
-	</head>
-
-	<body>
 
 		<div id="content">
 
@@ -34,15 +26,8 @@
 				
 				<center>
 					<span class="info">
-						<a href="#">Anda pengguna baru? Daftar disini</a>
+						<a href="<?php echo base_url()?>index.php/user/daftar">Anda pengguna baru? Daftar disini</a>
 					</span>
 				</center>
 
 			</div>
-
-		Myschedule 2013
-
-		</div>
-
-	</body>
-</html>

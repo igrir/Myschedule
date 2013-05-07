@@ -3,6 +3,16 @@ Aplikasi sederhana buat jadwal
 
 Ini tugas untuk promnet sih :p
 
+Halaman:
+1. HALAMAN LOGIN: myschedule/index.php
+2. HALAMAN DAFTAR: myschedule/index.php/user/daftar
+3. HALAMAN JADWAL USER SEDANG LOGIN: myschedule/index.php/user
+4. HALAMAN JADWAL USER lagi dilihat: myschedule/index.php/v/[nama_user] <Belum diimplementasikan>
+5. HALAMAN EDIT USER: myschedule/index.php/user/edit
+6. HALAMAN TAMBAH JADWAL: myschedule/index.php/jadwal/tambah
+7. HALAMAN EDIT JADWAL: myschedule/index.php/jadwal/edit
+
+
 Anggota kelompok:
 Firmansyah
 Giri

@@ -39,6 +39,7 @@
 */
 
 $route['default_controller'] = "myschedule";
+$route['(:any)'] = "$1";	//ini artinya bisa mengakses kontroller mana aja. Kalau mau buat routes khusus taruh di atas baris ini
 $route['404_override'] = '';
 $route['jadwal'] = 'jadwal';
 
