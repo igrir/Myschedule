@@ -1,1 +1,236 @@
-/*Ini CSS nya nanti*/
+*{
+	font-family: Arial;
+}
+
+body{
+	background-color: #fff1d5;
+	margin: 0px;
+}
+
+
+#content{
+	width: 960px;
+	margin: 0px auto;
+}
+
+#login{
+	width: 960px;
+	margin: 5px auto;
+	background-color: #fff;
+	box-shadow: 0px 1px 3px #000;
+
+	padding: 15px;
+
+}
+
+.input-form{
+	font-size: 20px;
+	width: 220px;
+}
+
+.input-button{
+	margin: 0px;
+	border: none;
+	background-color: #f8bc5f;
+	font-size: 20px;
+	box-shadow: 0px 2px 0px #c38930;
+	padding: 8px;
+	text-shadow: 0px 1px 1px #fff;
+	color: #505050;
+
+	-webkit-transition: box-shadow 0.1s, margin 0.1s;
+}
+
+.input-button:hover{
+	margin: 1px 0px 0px 0px;
+	box-shadow: 0px 1px 0px #c38930;
+}
+
+.tengah{
+	max-width: 250px;
+	margin: 0px auto;
+}
+
+.abu{
+	color: #505050;
+}
+
+.judul{
+	font-size: 25px;
+}
+
+.info{
+	font-size: 12px;
+}
+
+.judul-jadwal{
+	background-color: #f8bc5f;
+	width: 400px;
+	padding: 0px 0px 0px 5px;
+	box-shadow: 0px 1px 0px #b0b0b0;
+}
+
+.jadwal-card{
+	width: 420px;
+	background-color: #e0e0e0;
+	box-shadow: 0px 1px 0px #b0b0b0;
+	margin-bottom: 15px;
+	margin-left: 5px;
+	float: left;
+}
+
+.jadwal-content{
+	width: 400px;
+	background-color: #fff;
+	padding: 5px;
+
+	margin-top: 1px;
+	margin-bottom: 3px;
+
+	margin-left: 5px;
+
+	box-shadow: 0px 1px 0px #b0b0b0;
+}
+
+.jadwal-judul{
+	font-size: 18px;
+	text-transform: uppercase;
+}
+
+.jadwal-waktu{
+	font-size: 12px;
+}
+
+.jadwal-kategori{
+	font-size: 12px;
+	color: #b0b0b0;
+}
+
+.jadwal-menu{
+	font-size: 12px;
+}
+
+#jadwal-scroll{
+	width: 950px;
+	overflow-x: scroll;
+	min-height: 450px;
+	box-shadow: 0px 1px 1px #000;
+}
+
+#jadwal-container{
+	width: 3000px;
+	min-height: 450px;
+	background-image: url(../img/bg.png);
+}
+
+.clear{
+	clear: both;
+}
+
+.kiri{
+	float: left;
+}
+
+.kanan{
+	float: right;
+}
+
+#profil-bar{
+	width: 950px;
+	height: 80px;
+	background-color: #332d2d;
+	margin-bottom: 5px;
+	box-shadow: 0px 1px 1px #000;
+}
+
+#profil-photo{
+	width: 70px;
+	height: 70px;
+}
+
+#profil-username{
+	width: 500px;
+	color: #fff;
+	padding: 5px;
+}
+
+#profil-bio{
+	color: #fff;
+	padding: 5px;
+	font-size: 12px;
+}
+
+#profil-kiri{
+	width: 80px;
+}
+
+#profil-kanan{
+	width: 700px;
+}
+
+a.info{
+	position: relative;
+	z-index: 24;
+	background-color: #e0e0e0;
+	color: #000;
+	text-decoration: none;
+	border: none;
+}
+
+a.info:hover{
+	z-index: 25;
+}
+
+a.info span{
+	display: none;
+}
+
+a.info:hover span{ /*the span will display just on :hover state*/
+	display:block;
+	position:absolute;
+	bottom: 1.5em;
+	left: 1.8em;
+	background-color:#000; /* background colour here */
+	color:#fff;         /* text colour */
+	text-align: center;
+	font-size: 1.8em;
+	z-index:30;
+	padding: 3px;
+	opacity: 0.8;
+}
+
+.teman-button{
+	background-color: #fff;
+	font-size: 13px;
+	border-radius: 3px;
+	text-decoration: none;
+}
+
+#header-bar{
+	width: 100%;
+	height: 30px;
+	background-color: #303030;
+}
+
+#header-content{
+	padding: 5px;
+	color: #fff;
+}
+
+#header-content a{
+	text-decoration: none;
+	color: #fff;
+}
+
+.menu-jadwal a{
+	display: inline-block;
+	text-decoration: none;
+	color: #000;
+	font-size: 20px;
+	padding: 5px;
+}
+
+.menu-jadwal a:hover{
+	background-color: #000;
+	color: #fff;
+}

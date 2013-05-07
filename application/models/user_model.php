@@ -7,7 +7,6 @@ class user_model extends CI_Model{
 	//cek username dan password untuk login
 	function cek_username_password($username, $password){
 		$query = $this->db->get_where('user', array('username' => $username, 'password' => $password));
-		);
 		if($query->nm_rows == 1){
 			return true;
 		}else{
@@ -18,8 +17,8 @@ class user_model extends CI_Model{
 	//insert user
 	function insert_user(){
 		$data = array(
-				'username' => $this->input->post('username')
-				'password' => $this->input->post('password')
+				'username' => $this->input->post('username'),
+				'password' => $this->input->post('password'),
 				'bio' => $this->input->post('bio')
 				);
 	}

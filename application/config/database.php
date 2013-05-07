@@ -49,8 +49,8 @@ $active_group = 'default';
 $active_record = TRUE;
 
 $db['default']['hostname'] = 'localhost';
-$db['default']['username'] = 'lia';
-$db['default']['password'] = 'amai1727';
+$db['default']['username'] = 'root';
+$db['default']['password'] = '';
 $db['default']['database'] = 'myschedule';
 $db['default']['dbdriver'] = 'mysql';
 $db['default']['dbprefix'] = '';
