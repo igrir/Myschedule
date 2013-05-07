@@ -21,6 +21,7 @@ class user_model extends CI_Model{
 				'username' => $this->input->post('username')
 				'password' => $this->input->post('password')
 				'bio' => $this->input->post('bio')
+				'photo' => $this->upload->do_upload('photo')
 				);
 	}
 	
