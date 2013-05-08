@@ -27,11 +27,8 @@
 		}
 
 
-		/*
-		 *  PAGE
-		 *
-		 *	Daftar
-		 */
+		
+		
 		public function daftar(){
 			$data['title'] = "Daftar";
 			$this->load->view("template/header", $data);
