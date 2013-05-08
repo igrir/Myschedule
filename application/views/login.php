@@ -5,7 +5,7 @@
 			<div id="login">
 				<center>
 
-					<img src="img/logo.png"/>
+					<img src="<?php echo base_url()?>img/logo.png"/>
 					<br/><br/>
 				
 					<span class="judul">Login</span>
