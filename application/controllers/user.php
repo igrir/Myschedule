@@ -19,27 +19,23 @@
 		 *	Halaman utama user (Jadwal dari user berada di sini)
 		 */
 		 
-		 public function login(){
+		public function login(){
 			$username = $this->input->post('username');
 			$password = $this->input->post('password');
-			$hasil = $this->user_model->cek_username_password($username, $password);
 			
-			if($hasil->num_rows() == 1){
-				$data = $hasil->row();
-				$this->session->set_userdata('user_id', $data->user_id);
-				$this->session->set_userdata('name', $data->name);
-				
-				redirect('jadwal/index');
+			if ($this->user_model->cek_username_password($username,$password)) {
+				$this->load->view('jadwal');
+			} else {
+				$this->load->view('login');
 			}
 		}
 		
-		function add_user(){   
+		public function add_user(){   
 			$this->load->model('user_model');
 			$this->user_model->insert_user();
 			$data['notifikasi'] = 'Data berhasil disimpan';
 			$data['judul']='Insert Data Berhasil';
 		}
-		
 		public function index(){
 			$data['title'] = "Jadwal";
 			$this->load->view("template/header", $data);
@@ -48,9 +44,6 @@
 			$this->load->view("template/footer", $data);
 		}
 
-
-		
-		
 		public function daftar(){
 			$data['title'] = "Daftar";
 			$this->load->view("template/header", $data);

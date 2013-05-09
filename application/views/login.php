@@ -17,9 +17,9 @@
 				<div class="tengah">	
 					<form method="POST" action="<?php echo base_url()?>index.php/user/login">
 						<span class="abu">Username</span><br/>
-						<input type="text" class="input-form"/><br/>
+						<input type="text" name="username" class="input-form"/><br/>
 						<span class="abu">Password</span><br/>
-						<input type="text" class="input-form"/><br/>
+						<input type="password" name="password" class="input-form"/><br/>
 						<input type="submit" class="input-button" value="login"/>
 					</form>
 				</div>

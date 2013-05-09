@@ -28,7 +28,7 @@
 				</div>
 
 				<div class="menu-jadwal">
-					<a href="#">+ Tambah Jadwal</a>
+					<a href="<?php echo base_url()?>index.php/jadwal/tambah">+ Tambah Jadwal</a>
 				</div>
 
 
