@@ -24,18 +24,29 @@
 			$password = $this->input->post('password');
 			
 			if ($this->user_model->cek_username_password($username,$password)) {
-				$this->load->view('jadwal');
+				
+				$data['title'] = "Jadwal";
+				$this->load->view("template/header", $data);
+				$this->load->view("template/header_bar", $data);
+				$this->load->view("jadwal", $data);
+				$this->load->view("template/footer", $data);
 			} else {
-				$this->load->view('login');
+				$data['error']='!! Wrong Username or Password !!';
+				$this->load->view('login', $data);
+				$this->load->view("template/header", $data);
+				$this->load->view("template/footer", $data);
 			}
 		}
 		
 		public function add_user(){   
 			$this->load->model('user_model');
 			$this->user_model->insert_user();
-			$data['notifikasi'] = 'Data berhasil disimpan';
-			$data['judul']='Insert Data Berhasil';
+			$data['title'] = "Login";
+			$this->load->view("template/header", $data);
+			$this->load->view('login', $data);
+			$this->load->view("template/footer", $data);
 		}
+		
 		public function index(){
 			$data['title'] = "Jadwal";
 			$this->load->view("template/header", $data);
@@ -43,7 +54,8 @@
 			$this->load->view("jadwal", $data);
 			$this->load->view("template/footer", $data);
 		}
-
+		
+		
 		public function daftar(){
 			$data['title'] = "Daftar";
 			$this->load->view("template/header", $data);
@@ -63,6 +75,14 @@
 			$this->load->view("edit_user", $data);
 			$this->load->view("template/footer", $data);
 		}
-
+		
+		//to do logout process
+		function logout() {
+			$this->session->sess_destroy();
+			$data['logout'] = 'You have been logged out.';
+			$this->load->view("template/header", $data);
+			$this->load->view('login', $data);
+			$this->load->view("template/footer", $data);
+		}
 	}
 ?>
