@@ -9,29 +9,28 @@
 
 			//load model database user
 			$this->load->model('user_model');
-			//$this->load->library('sessionlogin');
+			$this->load->library('session');
 		}
 
-
-		/*
-		 *  PAGE
-		 *
-		 *	Halaman utama user (Jadwal dari user berada di sini)
-		 */
-		 
 		public function login(){
 			$username = $this->input->post('username');
 			$password = $this->input->post('password');
 			
 			if ($this->user_model->cek_username_password($username,$password)) {
-				
+
+				//data untuk kebutuhan session
+				$userdata = array('username'=>$username,
+								  'LOGGED_IN'=>true);
+
+				$this->session->set_userdata($userdata);
+
+				$data['error']='';
 				$data['title'] = "Jadwal";
-				$this->load->view("template/header", $data);
-				$this->load->view("template/header_bar", $data);
-				$this->load->view("jadwal", $data);
-				$this->load->view("template/footer", $data);
+				
+				redirect('user');
+
 			} else {
-				$data['error']='!! Wrong Username or Password !!';
+				$data['error']='Tidak ada username atau password tersebut';
 				$this->load->view('login', $data);
 				$this->load->view("template/header", $data);
 				$this->load->view("template/footer", $data);
@@ -47,12 +46,30 @@
 			$this->load->view("template/footer", $data);
 		}
 		
+
+
+		/*
+		 *  PAGE
+		 *
+		 *	Halaman utama user (Jadwal dari user berada di sini)
+		 */
 		public function index(){
 			$data['title'] = "Jadwal";
-			$this->load->view("template/header", $data);
-			$this->load->view("template/header_bar", $data);
-			$this->load->view("jadwal", $data);
-			$this->load->view("template/footer", $data);
+
+			//mengecek login
+			if ($this->session->userdata('LOGGED_IN')) {
+
+				$data['username'] = $this->session->userdata("username");
+
+				$this->load->view("template/header", $data);
+				$this->load->view("template/header_bar", $data);
+				$this->load->view("jadwal", $data);
+				$this->load->view("template/footer", $data);
+			}else{
+				redirect('myschedule');
+			}
+
+			
 		}
 		
 		
@@ -70,16 +87,22 @@
 		 */
 		public function edit(){
 			$data['title'] = "Edit user";
-			$this->load->view("template/header", $data);
-			$this->load->view("template/header_bar", $data);
-			$this->load->view("edit_user", $data);
-			$this->load->view("template/footer", $data);
+
+			//mengecek login
+			if ($this->session->userdata('LOGGED_IN')) {
+
+				$data['username'] = $this->session->userdata("username");
+				$this->load->view("template/header", $data);
+				$this->load->view("template/header_bar", $data);
+				$this->load->view("edit_user", $data);
+				$this->load->view("template/footer", $data);
+			}
 		}
 		
 		//to do logout process
 		function logout() {
 			$this->session->sess_destroy();
-			$data['logout'] = 'You have been logged out.';
+			$data['error'] = 'You have been logged out.';
 			$this->load->view("template/header", $data);
 			$this->load->view('login', $data);
 			$this->load->view("template/footer", $data);
