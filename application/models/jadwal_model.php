@@ -6,7 +6,7 @@ class jadwal_model extends CI_Model{
 	
 	//mengambil jadwal berdasarkan user tertentu
 	function select_by_user($user_id){
-		$this->db->order_by('id_jadwal', 'desc', 'nama_jadwal', 'hari', 'jam_mulai', 'jam_akhir');
+		$this->db->order_by('jam_mulai');
 		$data = $this->db->get_where('jadwal', array('user_id' => $user_id));
 		return $data->result();
 	}
@@ -25,7 +25,7 @@ class jadwal_model extends CI_Model{
 	}
 
 	//edit jadwal
-	function edit_jadwal($id_jadwal){
+	function edit_jadwal($id_jadwal, $data){
 		$this->db->where('id_jadwal', $id_jadwal);
 		$this->db->update('jadwal', $data); 
 		

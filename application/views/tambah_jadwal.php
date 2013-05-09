@@ -29,9 +29,9 @@
 							<option value="7">Minggu</option>
 						</select>
 						<br/>
-						<span class="abu">Jam mulai (format JJ:MM)</span><br/>
+						<span class="abu">Jam mulai (format JJ:MM:SS)</span><br/>
 						<input type="text" class="input-form" name="jam_mulai"/><br/>
-						<span class="abu">Jam akhir (format JJ:MM)</span><br/>
+						<span class="abu">Jam akhir (format JJ:MM:SS)</span><br/>
 						<input type="text" class="input-form" name="jam_akhir"/><br/>
 
 

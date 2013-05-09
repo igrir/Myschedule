@@ -65,6 +65,9 @@ class jadwal extends CI_Controller {
 				$data['nama_jadwal'] = $datajadwal->nama_jadwal;
 				$data['jam_mulai'] = $datajadwal->jam_mulai;
 				$data['jam_akhir'] = $datajadwal->jam_akhir;
+				$data['hari'] = $datajadwal->hari;
+
+				$data['id_jadwal'] = $datajadwal->id_jadwal;
 
 				$this->load->view("template/header", $data);
 				$this->load->view("template/header_bar", $data);
@@ -105,6 +108,40 @@ class jadwal extends CI_Controller {
 
 
 			$this->jadwal_model->insert_jadwal($data_jadwal);
+
+			redirect('user');
+		}
+	}
+
+	/*
+	 *  ACTION
+	 *
+	 *	Edit jadwal
+	 */
+	public function edit_jadwal(){
+
+		//mengecek login
+		if ($this->session->userdata('LOGGED_IN')) {
+			$username = $this->session->userdata("username");
+			$data['username'] = $username;
+
+			$data_user = $this->user_model->select_user($username);
+
+
+			$nama_jadwal = $this->input->post('nama_jadwal');
+			$jam_mulai = $this->input->post('jam_mulai');
+			$jam_akhir = $this->input->post('jam_akhir');
+			$hari = $this->input->post('hari');
+			$id_jadwal = $this->input->post('id_jadwal');
+
+
+			$data_jadwal = array('nama_jadwal'=>$this->input->post('nama_jadwal'),
+								 'hari'=>$this->input->post('hari'),
+								 'jam_mulai'=>$jam_mulai,
+								 'jam_akhir'=>$jam_akhir);
+
+
+			$this->jadwal_model->edit_jadwal($id_jadwal, $data_jadwal);
 
 			redirect('user');
 		}
