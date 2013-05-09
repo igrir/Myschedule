@@ -261,13 +261,21 @@ a.info2:hover span{ /*the span will display just on :hover state*/
 	background-color: #303030;
 }
 
-#header-content{
-	padding: 5px;
+#header-bar a{
+	display: inline-block;
+	background-color: #fff;
+	color: #000;
+	text-decoration: none;
+	padding: 2px 5px 2px 5px;
+}
+#header-bar a:hover{
+	background-color: #000;
 	color: #fff;
+	text-decoration: none;
 }
 
-#header-content a{
-	text-decoration: none;
+#header-content{
+	padding: 5px;
 	color: #fff;
 }
 

@@ -371,7 +371,7 @@
 				              //file yang lama dihapus
 				              $foto_lama = $datauser->photo;
 
-				              if ($foto_lama !=  "0") {
+				              if ($foto_lama !=  "0" && file_exists($namafolder.$foto_lama)) {
 				              		unlink($namafolder.$foto_lama);
 				              }
 
@@ -396,6 +396,16 @@
 				$data_pengguna = $this->user_model->select_user($username);
 
 				$data['bio'] = $data_pengguna->bio;
+				$foto = $data_pengguna->photo;
+				$foto_tampil = "";
+				if ($foto == 0) {
+					$foto_tampil = "<img src='".base_url()."img/kosong.png' width='80px' height='80px'/>";
+				}else{
+					$foto_tampil = "<img src='".base_url()."photo/".$foto."' width='80px' height='80px'/>";
+				}
+
+				$data['photo'] = $foto_tampil;
+
 
 				$this->load->view("template/header", $data);
 				$this->load->view("template/header_bar", $data);
