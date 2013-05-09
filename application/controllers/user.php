@@ -153,17 +153,34 @@
 					$userdata_teman = $this->user_model->select_user_by_id($data_teman->uid_2);
 
 					$username_teman = $userdata_teman->username;
-					$foto_teman = "ratna.jpg";
+					$foto_teman = "img/kosong.png";
+
+					if ($userdata_teman->photo != 0) {
+						$foto_teman = "photo/".$userdata_teman->photo;
+					}
+
+					$foto_view = "<img src='".base_url().$foto_teman."' width='40px' height='40px'/>";
+
 					$link_teman = base_url()."index.php/user/u/".$username_teman;
 
 					$tampil_teman .= "<a class='info' href='$link_teman'>
-										<img src='".base_url()."photo/".$foto_teman."' width='40px' height='40px'/>
+										".$foto_view."
 										<span>".$username_teman."</span>
 									 </a>";
 
 				}
 
+				$foto = $data_user->photo;
+				$foto_tampil = "";
+				if ($foto == 0) {
+					$foto_tampil = "<img src='".base_url()."img/kosong.png' width='80px' height='80px'/>";
+				}else{
+					$foto_tampil = "<img src='".base_url()."photo/".$foto."' width='80px' height='80px'/>";
+				}
+
+
 				$data['teman'] = $tampil_teman;
+				$data['photo'] = $foto_tampil;
 
 				$this->load->view("template/header", $data);
 				$this->load->view("template/header_bar", $data);
@@ -283,6 +300,77 @@
 					$data['error'] = "Password lama tidak benar";
 				}
 								
+				//data yang ditampilkan di halaman edit
+				$data_pengguna = $this->user_model->select_user($username);
+
+				$data['bio'] = $data_pengguna->bio;
+
+				$this->load->view("template/header", $data);
+				$this->load->view("template/header_bar", $data);
+				$this->load->view("edit_user", $data);
+				$this->load->view("template/footer", $data);
+				
+
+			}
+		}
+
+		/*
+		 *  Action
+		 *
+		 *	Edit gambar
+		 */
+		public function edit_photo(){
+
+			//mengecek login
+			if ($this->session->userdata('LOGGED_IN')) {
+				$username = $this->session->userdata("username");
+
+				$datauser = $this->user_model->select_user($username);
+
+				$data['username'] = $username;
+
+				
+				$data['error'] = "";
+
+
+				$namafolder= "photo/"; //folder tempat menyimpan file
+
+				/****   UPLOAD GAMBAR  *****/
+
+				  if (!empty($_FILES["photo"]["tmp_name"]))
+				  {
+				      $jenis_gambar=$_FILES['photo']['type'];
+				      if($jenis_gambar=="image/jpeg" || $jenis_gambar=="image/jpg" || $jenis_gambar=="image/gif" || $jenis_gambar=="image/png")
+				      {      
+
+				      	  $basename_gambar = $datauser->user_id.basename($_FILES['photo']['name']);
+				          $gambar = $namafolder .$basename_gambar;
+				          if (move_uploaded_file($_FILES['photo']['tmp_name'], $gambar)) {
+				              
+				              //file yang lama dihapus
+				              $foto_lama = $datauser->photo;
+
+				              if ($foto_lama !=  "0") {
+				              		unlink($namafolder.$foto_lama);
+				              }
+				              
+			              	//simpan nama gambar di database
+				            $this->user_model->simpan_update_user($datauser->user_id, array("photo"=>$basename_gambar));
+				           	$data['error'] = "Foto berhasil diupload";
+
+				          } else {
+				             $data['error'] = "Foto gagal diupload";
+				          }
+
+				      } else {
+				          $data['error'] = "Foto harus berjenis .jpg .gif .png";
+				      }
+				  
+				  }else {
+				        $data['error'] = "Anda belum memilih gambar";
+				  }
+
+
 				//data yang ditampilkan di halaman edit
 				$data_pengguna = $this->user_model->select_user($username);
 

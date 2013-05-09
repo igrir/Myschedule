@@ -25,12 +25,14 @@
 						<input type="submit" class="input-button" value="Edit bio"/>
 					</form>
 					<hr/>
-					<form>	
-						<span class="abu">Gambar</span><br/>
-						<input type="file">
 
-						<input type="submit" class="input-button" value="Edit gambar"/>
+					<form action="<?php echo base_url()?>index.php/user/edit_photo" method="post" enctype="multipart/form-data" name="FormUpload" id="FormUpload">
+						<span class="abu">Gambar</span><br/>
+						<input type="file" name="photo">
+
+						<input type="submit" class="input-button" value="Upload gambar"/>
 					</form>
+					
 					<hr/>
 					<form action="<?php echo base_url()?>index.php/user/edit_pass" method="POST">
 						<span class="abu">Password lama</span><br/>

@@ -27,13 +27,13 @@ class user_model extends CI_Model{
 	
 	
 	function select_user($username){
-		$this->db->select('user_id, username, bio');
+		$this->db->select('user_id, username, bio, photo');
 		$query = $this->db->get_where('user', array('username' => $username));
 		return $query->row();
 	}
 
 	function select_user_by_id($user_id){
-		$this->db->select('user_id, username, bio');
+		$this->db->select('user_id, username, bio, photo');
 		$query = $this->db->get_where('user', array('user_id' => $user_id));
 		return $query->row();
 	}

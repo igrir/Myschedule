@@ -19,10 +19,7 @@
 						<input type="text" name="username" class="input-form"/><br/>
 						
 						<span class="abu">Password</span><br/>
-						<input type="text" name="password" class="input-form"/><br/>
-						
-						<span class="abu">Photo</span><br/>
-						<input type="file" name="photo" class="input-form"/><br/>
+						<input type="password" name="password" class="input-form"/><br/>
 						
 						<span class="abu">Bio</span><br/>
 						<textarea type="text" name="bio" class="input-form"></textarea><br/>

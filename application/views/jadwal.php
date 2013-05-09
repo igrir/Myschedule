@@ -6,7 +6,7 @@
 
 					<div id="profil-kiri" class="kiri">
 						<div id="profil-photo">
-							<img src="<?php echo base_url()?>photo/ratna.jpg" width="80px" height="80px"/>
+							<?php echo $photo?>
 						</div>
 					</div>
 					
