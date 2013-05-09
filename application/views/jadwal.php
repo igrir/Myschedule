@@ -10,14 +10,10 @@
 						</div>
 					</div>
 					
-					<div id="profil-kanan">
+					<div id="profil-kanan" class="kiri">
 
-						<div class="kiri">
-
-							<div id="profil-username">@<?php echo $dat_username?> <a href="#" class="teman-button">+teman</a></div>
-							<div id="profil-bio"><?php echo $dat_bio?></div>
-
-						</div>
+						<div id="profil-username">@<?php echo $dat_username?> <a href="#" class="teman-button">+teman</a></div>
+						<div id="profil-bio"><?php echo $dat_bio?></div>
 
 					</div>
 					
