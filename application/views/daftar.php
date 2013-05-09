@@ -14,7 +14,7 @@
 
 
 				<div class="tengah">	
-					<form>
+					<form method="POST" action="<?php echo base_url()?>index.php/user/add_user">
 						<span class="abu">Username</span><br/>
 						<input type="text" class="input-form"/><br/>
 						<span class="abu">Password</span><br/>
