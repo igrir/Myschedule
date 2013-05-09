@@ -30,12 +30,12 @@ class jadwal_model extends CI_Model{
 	
 	//ambil jam mulai
 	function ambil_jam_mulai($id_jadwal){
-		$query = $this->db->query('select time_format(jam_mulai,' '%H:%i'')from jadwal where id_jadwal=$id_jadwal');
+		// $query = $this->db->query('select time_format(jam_mulai,' '%H:%i'')from jadwal where id_jadwal=$id_jadwal');
 	}
 	
 	//ambil jam akhir
 	function ambil_jam_akhir($id_jadwal){
-		$query = $this->db->query('select time_format(jam_akhir,' '%H:%i'')from jadwal where id_jadwal=$id_jadwal');
+		// $query = $this->db->query('select time_format(jam_akhir,' '%H:%i'')from jadwal where id_jadwal=$id_jadwal');
 	}
 }
 ?>
