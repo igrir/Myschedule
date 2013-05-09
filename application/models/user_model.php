@@ -25,14 +25,14 @@ class user_model extends CI_Model{
 		$this->db->insert('user',$data);
 	}
 	
-	
+	//update user
 	function select_user($username){
 		$this->db->select('username, bio');
 		$query = $this->db->get_where('user', array('username' => $username));
 		return $query->row();
 	}
 
-	//update user
+	
 	function simpan_update_user($username, $data){
 		$this->db->where('username', $username);
 		$this->db->update('user', $data);
