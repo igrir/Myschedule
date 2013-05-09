@@ -113,6 +113,40 @@ class jadwal extends CI_Controller {
 		}
 	}
 
+
+	/*
+	 *  ACTION
+	 *
+	 *	Copy jadwal
+	 */
+	public function copy(){
+
+		//mengecek login
+		if ($this->session->userdata('LOGGED_IN')) {
+
+			$id_jadwal = $this->uri->segment(3);
+
+			$username = $this->session->userdata("username");
+			$data['username'] = $username;
+
+			$data_user = $this->user_model->select_user($username);
+
+			$data_copy = $this->jadwal_model->select_by_id($id_jadwal);
+
+
+			$data_jadwal = array('user_id'=>$data_user->user_id,
+								 'nama_jadwal'=>$data_copy->nama_jadwal,
+								 'hari'=>$data_copy->hari,
+								 'jam_mulai'=>$data_copy->jam_mulai,
+								 'jam_akhir'=>$data_copy->jam_akhir);
+
+
+			$this->jadwal_model->insert_jadwal($data_jadwal);
+
+			redirect('user');
+		}
+	}
+
 	/*
 	 *  ACTION
 	 *

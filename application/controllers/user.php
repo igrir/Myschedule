@@ -102,8 +102,8 @@
 					$base_url = base_url();
 					$id_jadwal = $data_jadwal->id_jadwal;
 
-					$link_edit = "<a href='".$base_url."index.php/jadwal/edit/".$id_jadwal."'> edit </a>";
-					$link_copy = "copy";
+					$link_edit = "<a href='".$base_url."index.php/jadwal/edit/".$id_jadwal."'>edit</a>";
+					$link_copy = "<a href='".$base_url."index.php/jadwal/copy/".$id_jadwal."'>copy</a>";
 
 					if ($dat_username != $this->session->userdata('username')) {
 						$link_edit = "";
