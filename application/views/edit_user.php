@@ -23,6 +23,13 @@
 						<input type="submit" class="input-button" value="Edit bio"/>
 					</form>
 					<hr/>
+					<form>	
+						<span class="abu">Gambar</span><br/>
+						<input type="file">
+
+						<input type="submit" class="input-button" value="Edit gambar"/>
+					</form>
+					<hr/>
 					<form>
 						<span class="abu">Password lama</span><br/>
 						<input type="text" class="input-form"/><br/>

@@ -48,38 +48,6 @@
 								<span class="jadwal-menu">edit | copy</span><br/>
 							</div>
 
-							<div class="jadwal-content">
-								<span class="jadwal-judul">Nonton Bareng Teman Teman di tempat makan</span><br/>
-								<span class="jadwal-waktu">08:00-09:00</span><br/>
-								<span class="jadwal-menu">edit | copy</span><br/>
-							</div>
-
-							<div class="jadwal-content">
-								<span class="jadwal-judul">Nonton Bareng</span><br/>
-								<span class="jadwal-waktu">08:00-09:00</span><br/>
-								<span class="jadwal-menu">edit | copy</span><br/>
-							</div>
-						</div>				
-
-						<div class="jadwal-card">
-							<div class="judul-jadwal">
-								<span class="judul">
-									Selasa
-								</span>
-							</div>
-
-							<div class="jadwal-content">
-								<span class="jadwal-judul">Pemrograman Internet</span><br/>
-								<span class="jadwal-waktu">08:00-09:00</span><br/>
-								<span class="jadwal-menu">edit | copy</span><br/>
-							</div>
-
-							<div class="jadwal-content">
-								<span class="jadwal-judul">Nonton Bareng</span><br/>
-								<span class="jadwal-waktu">08:00-09:00</span><br/>
-								<span class="jadwal-menu">edit | copy</span><br/>
-							</div>
-
 						</div>		
 
 						<div class="jadwal-card">
@@ -95,11 +63,6 @@
 								<span class="jadwal-menu">edit | copy</span><br/>
 							</div>
 
-							<div class="jadwal-content">
-								<span class="jadwal-judul">Nonton Bareng</span><br/>
-								<span class="jadwal-waktu">08:00-09:00</span><br/>
-								<span class="jadwal-menu">edit | copy</span><br/>
-							</div>
 
 						</div>		
 
