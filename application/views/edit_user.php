@@ -16,9 +16,9 @@
 
 				<div class="tengah">	
 
-					<form>	
+					<form action="<?php echo base_url()?>index.php/user/edit_bio" method="POST">	
 						<span class="abu">Bio</span><br/>
-						<textarea class="input-form"><?php echo $bio?></textarea><br/>
+						<textarea class="input-form" name="bio"><?php echo $bio?></textarea><br/>
 
 						<input type="submit" class="input-button" value="Edit bio"/>
 					</form>

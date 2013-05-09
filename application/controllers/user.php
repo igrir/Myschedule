@@ -62,9 +62,9 @@
 			if ($this->session->userdata('LOGGED_IN')) {
 
 				$username = $this->session->userdata("username");
-				$data['username'] = $username;
-
 				$data_user = $this->user_model->select_user($username);
+				$data['username'] = $username;
+				$data['bio'] = $data_user->bio;
 
 				$data['jadwal_senin'] = "";
 				$data['jadwal_selasa'] = "";
@@ -163,6 +163,32 @@
 				$this->load->view("template/footer", $data);
 			}
 		}
+
+		/*
+		 *  Action
+		 *
+		 *	Edit bio
+		 */
+		public function edit_bio(){
+
+			//mengecek login
+			if ($this->session->userdata('LOGGED_IN')) {
+				$username = $this->session->userdata("username");
+
+				$datauser = $this->user_model->select_user($username);
+
+				$data['username'] = $username;
+
+				//data edit
+				$bio = $this->input->post('bio');
+
+				$this->user_model->simpan_update_user($datauser->user_id, array('bio'=>$bio));
+
+				redirect('user/edit');
+
+			}
+		}
+
 		
 		//to do logout process
 		function logout() {

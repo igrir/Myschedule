@@ -33,8 +33,8 @@ class user_model extends CI_Model{
 	}
 
 	//update user
-	function simpan_update_user($username, $data){
-		$this->db->where('username', $username);
+	function simpan_update_user($user_id, $data){
+		$this->db->where('user_id', $user_id);
 		$this->db->update('user', $data);
 	}
 	

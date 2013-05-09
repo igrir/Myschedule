@@ -14,9 +14,8 @@
 
 						<div class="kiri">
 
-							<div id="profil-username">@RatnaAsri <a href="#" class="teman-button">+teman</a></div>
-							<div id="profil-bio">Ini Ratna. Studied Computer Science at Indonesia
-												 University of Education. Lives in Bandung</div>
+							<div id="profil-username">@<?php echo $username?> <a href="#" class="teman-button">+teman</a></div>
+							<div id="profil-bio"><?php echo $bio?></div>
 
 						</div>
 
