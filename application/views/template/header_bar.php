@@ -5,7 +5,7 @@
 					<img src="<?php echo base_url()?>img/logo_small.png" width="20px"/>
 				</div>
 				<div class="kanan">
-					Hi <a href="#">RatnaAsri!</a> | <a href="#">Profil</a> | <a href="#">Logout</a>
+					Hi <a href="<?php echo base_url()?>index.php/user"><?php echo $username?></a> | <a href="<?php echo base_url()?>index.php/user/edit">Profil</a> | <a href="<?php echo base_url()?>index.php/user/logout">Logout</a>
 				</div>
 			</div>				
 		</div>

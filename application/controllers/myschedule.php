@@ -20,6 +20,7 @@
 		 */
 		public function index(){
 			$data['title'] = "My Schedule";
+			$data['error'] = "";
 			$this->load->view("template/header", $data);
 			$this->load->view("login", $data);
 			$this->load->view("template/footer", $data);

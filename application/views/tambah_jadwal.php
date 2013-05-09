@@ -15,24 +15,24 @@
 
 				<div class="tengah">	
 
-					<form>
+					<form action="<?php echo base_url()?>index.php/jadwal/add_jadwal" method="POST">
 						<span class="abu">Nama jadwal</span><br/>
-						<input type="text" class="input-form"/><br/>
+						<input type="text" class="input-form" name="nama_jadwal"/><br/>
 						<span class="abu">Hari</span><br/>
-						<select class="input-form">
-							<option>Senin</option>
-							<option>Selasa</option>
-							<option>Rabu</option>
-							<option>Kamis</option>
-							<option>Jumat</option>
-							<option>Sabtu</option>
-							<option>Minggu</option>
+						<select class="input-form" name="hari">
+							<option value="1">Senin</option>
+							<option value="2">Selasa</option>
+							<option value="3">Rabu</option>
+							<option value="4">Kamis</option>
+							<option value="5">Jumat</option>
+							<option value="6">Sabtu</option>
+							<option value="7">Minggu</option>
 						</select>
 						<br/>
-						<span class="abu">Jam mulai</span><br/>
-						<input type="text" class="input-form"/><br/>
-						<span class="abu">Jam selesai</span><br/>
-						<input type="text" class="input-form"/><br/>
+						<span class="abu">Jam mulai (format JJ:MM:SS)</span><br/>
+						<input type="text" class="input-form" name="jam_mulai"/><br/>
+						<span class="abu">Jam akhir (format JJ:MM:SS)</span><br/>
+						<input type="text" class="input-form" name="jam_akhir"/><br/>
 
 
 						<input type="submit" class="input-button" value="Tambah jadwal"/>

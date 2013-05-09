@@ -5,7 +5,7 @@
 			<div id="login">
 				<center>
 
-					<img src="img/logo.png"/>
+					<img src="<?php echo base_url()?>img/logo.png"/>
 					<br/><br/>
 				
 					<span class="judul">Login</span>
@@ -14,12 +14,14 @@
 				</center>
 
 
-				<div class="tengah">	
-					<form>
+				<div class="tengah">
+					<?php echo $error?>
+
+					<form method="POST" action="<?php echo base_url()?>index.php/user/login">
 						<span class="abu">Username</span><br/>
-						<input type="text" class="input-form"/><br/>
+						<input type="text" name="username" class="input-form"/><br/>
 						<span class="abu">Password</span><br/>
-						<input type="text" class="input-form"/><br/>
+						<input type="password" name="password" class="input-form"/><br/>
 						<input type="submit" class="input-button" value="login"/>
 					</form>
 				</div>

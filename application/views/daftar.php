@@ -14,15 +14,18 @@
 
 
 				<div class="tengah">	
-					<form>
+					<form method="POST" action="<?php echo base_url()?>index.php/user/add_user">
 						<span class="abu">Username</span><br/>
-						<input type="text" class="input-form"/><br/>
+						<input type="text" name="username" class="input-form"/><br/>
+						
 						<span class="abu">Password</span><br/>
-						<input type="text" class="input-form"/><br/>
-						<span class="abu">Password</span><br/>
-						<input type="text" class="input-form"/><br/>
+						<input type="text" name="password" class="input-form"/><br/>
+						
+						<span class="abu">Photo</span><br/>
+						<input type="file" name="photo" class="input-form"/><br/>
+						
 						<span class="abu">Bio</span><br/>
-						<textarea class="input-form"></textarea><br/>
+						<textarea type="text" name="bio" class="input-form"></textarea><br/>
 
 						<input type="submit" class="input-button" value="daftar"/>
 					</form>

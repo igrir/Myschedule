@@ -1,4 +1,4 @@
-<?
+<?php
 class user_model extends CI_Model{
 	public function __construct(){
 		$this->load->database();
@@ -7,7 +7,7 @@ class user_model extends CI_Model{
 	//cek username dan password untuk login
 	function cek_username_password($username, $password){
 		$query = $this->db->get_where('user', array('username' => $username, 'password' => $password));
-		if($query->nm_rows == 1){
+		if($query->num_rows()== 1){
 			return true;
 		}else{
 			return false;
@@ -20,17 +20,19 @@ class user_model extends CI_Model{
 				'username' => $this->input->post('username'),
 				'password' => $this->input->post('password'),
 				'bio' => $this->input->post('bio'),
-				'photo' => $this->upload->do_upload('photo'),
+				'photo' => $this->input->post('photo'),
 				);
+		$this->db->insert('user',$data);
 	}
 	
-	//update user
+	
 	function select_user($username){
-		$this->db->select('username, bio');
+		$this->db->select('user_id, username, bio');
 		$query = $this->db->get_where('user', array('username' => $username));
 		return $query->row();
 	}
-	
+
+	//update user
 	function simpan_update_user($username, $data){
 		$this->db->where('username', $username);
 		$this->db->update('user', $data);
