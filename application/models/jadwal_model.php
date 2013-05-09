@@ -4,10 +4,10 @@ class jadwal_model extends CI_Model{
 		$this->load->database();
 	}
 	
-	//mengambil jadwal berdasaekan user tertentu
-	function select_by_user($username){
-		$this->db->order_by('id_jadwal', 'desc');
-		$data = $this->db->get_where('jadwal', array('username' => $username));
+	//mengambil jadwal berdasarkan user tertentu
+	function select_by_user($user_id){
+		$this->db->order_by('id_jadwal', 'desc', 'nama_jadwal', 'hari', 'jam_mulai', 'jam_akhir');
+		$data = $this->db->get_where('jadwal', array('user_id' => $user_id));
 		return $data->result();
 	}
 	

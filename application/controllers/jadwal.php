@@ -83,7 +83,7 @@ class jadwal extends CI_Controller {
 
 			$this->jadwal_model->insert_jadwal($data_jadwal);
 
-			//redirect('user');
+			redirect('user');
 		}
 	}
 

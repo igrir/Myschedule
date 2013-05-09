@@ -10,6 +10,7 @@
 			//load model database user
 			$this->load->model('user_model');
 			$this->load->library('session');
+			$this->load->model('jadwal_model');
 		}
 
 		public function login(){
@@ -59,7 +60,57 @@
 			//mengecek login
 			if ($this->session->userdata('LOGGED_IN')) {
 
-				$data['username'] = $this->session->userdata("username");
+				$username = $this->session->userdata("username");
+				$data['username'] = $username;
+
+				$data_user = $this->user_model->select_user($username);
+
+				$data['jadwal_senin'] = "";
+				$data['jadwal_selasa'] = "";
+				$data['jadwal_rabu'] = "";
+				$data['jadwal_kamis'] = "";
+				$data['jadwal_jumat'] = "";
+				$data['jadwal_sabtu'] = "";
+				$data['jadwal_minggu'] = "";
+
+				foreach($this->jadwal_model->select_by_user($data_user->user_id) as $data_jadwal){
+					$j_nama = $data_jadwal->nama_jadwal;
+					$j_jam_mulai = $data_jadwal->jam_mulai;
+					$j_jam_akhir = $data_jadwal->jam_akhir;
+
+					$tampil_jadwal = "<div class='jadwal-content'>
+										<span class='jadwal-judul'>".$j_nama."</span><br/>
+										<span class='jadwal-waktu'>".$j_jam_mulai."-".$j_jam_akhir."</span><br/>
+										<span class='jadwal-menu'>edit | copy</span><br/>
+									  </div>";
+
+					switch ($data_jadwal->hari) {
+						case 1:
+							$data['jadwal_senin'] .= $tampil_jadwal;
+							break;
+						case 2:
+							$data['jadwal_selasa'] .= $tampil_jadwal;
+							break;
+						case 3:
+							$data['jadwal_rabu'] .= $tampil_jadwal;
+							break;
+						case 4:
+							$data['jadwal_kamis'] .= $tampil_jadwal;
+							break;
+						case 5:
+							$data['jadwal_jumat'] .= $tampil_jadwal;
+							break;
+						case 6:
+							$data['jadwal_sabtu'] .= $tampil_jadwal;
+							break;
+						case 7:
+							$data['jadwal_minggu'] .= $tampil_jadwal;
+							break;
+					}
+
+				};
+
+				
 
 				$this->load->view("template/header", $data);
 				$this->load->view("template/header_bar", $data);
