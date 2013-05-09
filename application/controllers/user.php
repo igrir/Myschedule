@@ -220,6 +220,15 @@
 
 				$data['bio'] = $data_pengguna->bio;
 
+				$foto = $data_pengguna->photo;
+				$foto_tampil = "";
+				if ($foto == 0) {
+					$foto_tampil = "<img src='".base_url()."img/kosong.png' width='80px' height='80px'/>";
+				}else{
+					$foto_tampil = "<img src='".base_url()."photo/".$foto."' width='80px' height='80px'/>";
+				}
+				$data['photo'] = $foto_tampil;
+
 				$this->load->view("template/header", $data);
 				$this->load->view("template/header_bar", $data);
 				$this->load->view("edit_user", $data);
@@ -353,7 +362,7 @@
 				              if ($foto_lama !=  "0") {
 				              		unlink($namafolder.$foto_lama);
 				              }
-				              
+
 			              	//simpan nama gambar di database
 				            $this->user_model->simpan_update_user($datauser->user_id, array("photo"=>$basename_gambar));
 				           	$data['error'] = "Foto berhasil diupload";

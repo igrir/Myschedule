@@ -28,8 +28,12 @@
 
 					<form action="<?php echo base_url()?>index.php/user/edit_photo" method="post" enctype="multipart/form-data" name="FormUpload" id="FormUpload">
 						<span class="abu">Gambar</span><br/>
+						<center>
+							<?php echo $photo?><br/>
+							<br/>
+						</center>
 						<input type="file" name="photo">
-
+						<br/>
 						<input type="submit" class="input-button" value="Upload gambar"/>
 					</form>
 					
