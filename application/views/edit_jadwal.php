@@ -17,11 +17,11 @@
 
 					<form>
 						<span class="abu">Nama jadwal</span><br/>
-						<input type="text" class="input-form"/><br/>
+						<input type="text" class="input-form" value="<?php echo $nama_jadwal?>"/><br/>
 						<span class="abu">Hari</span><br/>
 						<select class="input-form">
 							<option>Senin</option>
-							<option>Selasa</option>
+							<option selected>Selasa</option>
 							<option>Rabu</option>
 							<option>Kamis</option>
 							<option>Jumat</option>
@@ -30,9 +30,9 @@
 						</select>
 						<br/>
 						<span class="abu">Jam mulai</span><br/>
-						<input type="text" class="input-form"/><br/>
-						<span class="abu">Jam selesai</span><br/>
-						<input type="text" class="input-form"/><br/>
+						<input type="text" class="input-form" value="<?php echo $jam_mulai?>"/><br/>
+						<span class="abu">Jam akhir</span><br/>
+						<input type="text" class="input-form" value="<?php echo $jam_akhir?>"/><br/>
 
 
 						<input type="submit" class="input-button" value="Edit jadwal"/>

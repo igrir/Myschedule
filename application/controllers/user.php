@@ -42,6 +42,7 @@
 			$this->load->model('user_model');
 			$this->user_model->insert_user();
 			$data['title'] = "Login";
+			$data['error'] = "";
 			$this->load->view("template/header", $data);
 			$this->load->view('login', $data);
 			$this->load->view("template/footer", $data);
@@ -78,10 +79,17 @@
 					$j_jam_mulai = $data_jadwal->jam_mulai;
 					$j_jam_akhir = $data_jadwal->jam_akhir;
 
+					$base_url = base_url();
+					$id_jadwal = $data_jadwal->id_jadwal;
+
 					$tampil_jadwal = "<div class='jadwal-content'>
 										<span class='jadwal-judul'>".$j_nama."</span><br/>
 										<span class='jadwal-waktu'>".$j_jam_mulai."-".$j_jam_akhir."</span><br/>
-										<span class='jadwal-menu'>edit | copy</span><br/>
+										<span class='jadwal-menu'>
+												<a href='".$base_url."index.php/jadwal/edit/".$id_jadwal."'> edit </a>
+												| copy
+										</span>
+										<br/>
 									  </div>";
 
 					switch ($data_jadwal->hari) {

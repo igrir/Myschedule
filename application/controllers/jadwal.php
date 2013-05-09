@@ -48,10 +48,33 @@ class jadwal extends CI_Controller {
 	 */
 	public function edit(){
 		$data['title'] = "Edit Jadwal";
-		$this->load->view("template/header", $data);
-		$this->load->view("template/header_bar", $data);
-		$this->load->view("edit_jadwal", $data);
-		$this->load->view("template/footer", $data);
+
+		$id_jadwal = $this->uri->segment(3);
+
+		if ($this->session->userdata('LOGGED_IN')) {
+			$username = $this->session->userdata("username");
+			$data['username'] = $username;
+			
+			$datauser = $this->user_model->select_user($username);
+			$datajadwal = $this->jadwal_model->select_by_id($id_jadwal);
+			
+			//cek dulu apakah user bersangkutan memiliki id jadwal tersebut
+			//ini mencegah user lain mengedit jadwal si user tadi
+			if ($datajadwal->user_id == $datauser->user_id) {
+
+				$data['nama_jadwal'] = $datajadwal->nama_jadwal;
+				$data['jam_mulai'] = $datajadwal->jam_mulai;
+				$data['jam_akhir'] = $datajadwal->jam_akhir;
+
+				$this->load->view("template/header", $data);
+				$this->load->view("template/header_bar", $data);
+				$this->load->view("edit_jadwal", $data);
+				$this->load->view("template/footer", $data);
+			}
+			
+
+			
+		}
 	}
 
 	/*

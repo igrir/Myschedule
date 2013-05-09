@@ -11,6 +11,12 @@ class jadwal_model extends CI_Model{
 		return $data->result();
 	}
 	
+	//mengambil jadwal berdasarkan id tertentu
+	function select_by_id($id_jadwal){
+		$query = $this->db->get_where('jadwal', array('id_jadwal' => $id_jadwal));
+		return $query->row();
+	}
+
 	//menambah jadwal baru
 	function insert_jadwal($data){
 		$query = $this->db->insert('jadwal', $data);
@@ -29,15 +35,6 @@ class jadwal_model extends CI_Model{
 	function hapus_jadwal($data){
 		$query = $this->db->delete('jadwal',$data);
 	}
-	
-	//ambil jam mulai
-	function ambil_jam_mulai($id_jadwal){
-		// $query = $this->db->query('select time_format(jam_mulai,' '%H:%i'')from jadwal where id_jadwal=$id_jadwal');
-	}
-	
-	//ambil jam akhir
-	function ambil_jam_akhir($id_jadwal){
-		// $query = $this->db->query('select time_format(jam_akhir,' '%H:%i'')from jadwal where id_jadwal=$id_jadwal');
-	}
+
 }
 ?>
