@@ -6,7 +6,8 @@ class jadwal extends CI_Controller {
 		parent :: __construct();
 			$this->load->helper('url'); 
 			$this->load->model('jadwal_model');
-			
+			$this->load->library('session');
+
 	}
 	
 	public function index(){
@@ -24,12 +25,19 @@ class jadwal extends CI_Controller {
 	 */
 	public function tambah(){
 		$data['title'] = "Tambah Jadwal";
-		$this->load->view("template/header", $data);
-		$this->load->view("template/header_bar", $data);
-		$this->load->view("tambah_jadwal", $data);
-		$this->load->view("template/footer", $data);
-		$this->load->model('jadwal_model');
-		$this->jadwal_model->insert_jadwal($data);
+
+		//mengecek login
+		if ($this->session->userdata('LOGGED_IN')) {
+			$username = $this->session->userdata("username");
+			$data['username'] = $username;
+
+			$this->load->view("template/header", $data);
+			$this->load->view("template/header_bar", $data);
+			$this->load->view("tambah_jadwal", $data);
+			$this->load->view("template/footer", $data);
+			$this->load->model('jadwal_model');
+			//$this->jadwal_model->insert_jadwal($data);
+		}
 		
 	}
 

@@ -18,7 +18,7 @@
 
 					<form>	
 						<span class="abu">Bio</span><br/>
-						<textarea class="input-form"></textarea><br/>
+						<textarea class="input-form"><?php echo $bio?></textarea><br/>
 
 						<input type="submit" class="input-button" value="Edit bio"/>
 					</form>
@@ -36,10 +36,5 @@
 
 				</div>
 				
-				<center>
-					<span class="info">
-						<a href="#">Anda pengguna baru? Daftar disini</a>
-					</span>
-				</center>
 
 			</div>

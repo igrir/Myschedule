@@ -90,8 +90,14 @@
 
 			//mengecek login
 			if ($this->session->userdata('LOGGED_IN')) {
+				$username = $this->session->userdata("username");
+				$data['username'] = $username;
 
-				$data['username'] = $this->session->userdata("username");
+				//data yang ditampilkan di halaman edit
+				$data_pengguna = $this->user_model->select_user($username);
+
+				$data['bio'] = $data_pengguna->bio;
+
 				$this->load->view("template/header", $data);
 				$this->load->view("template/header_bar", $data);
 				$this->load->view("edit_user", $data);
