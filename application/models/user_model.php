@@ -32,6 +32,18 @@ class user_model extends CI_Model{
 		return $query->row();
 	}
 
+	function is_user_exist($username){
+		$this->db->select('user_id, username, bio, photo');
+		$query = $this->db->get_where('user', array('username' => $username));
+		$hasil = $query->num_rows();
+
+		if ($hasil > 0) {
+			return true;
+		}else{
+			return false;
+		}
+	}
+
 	function select_user_by_id($user_id){
 		$this->db->select('user_id, username, bio, photo');
 		$query = $this->db->get_where('user', array('user_id' => $user_id));

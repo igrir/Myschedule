@@ -41,12 +41,23 @@
 		
 		public function add_user(){   
 			$this->load->model('user_model');
-			$this->user_model->insert_user();
-			$data['title'] = "Login";
-			$data['error'] = "";
-			$this->load->view("template/header", $data);
-			$this->load->view('login', $data);
-			$this->load->view("template/footer", $data);
+
+			if ($this->user_model->is_user_exist($this->input->post('username')) == false) {
+				$this->user_model->insert_user();
+				$data['title'] = "Login";
+				$data['error'] = "";
+				$this->load->view("template/header", $data);
+				$this->load->view('login', $data);
+				$this->load->view("template/footer", $data);
+			}else{
+				$data['title'] = "Login";
+				$data['error'] = "sudah ada pengguna dengan nama '".$this->input->post('username')."' , gunakan nama lain";
+				$this->load->view("template/header", $data);
+				$this->load->view("daftar", $data);
+				$this->load->view("template/footer", $data);
+			}
+
+			
 		}
 		
 
@@ -196,6 +207,7 @@
 		
 		public function daftar(){
 			$data['title'] = "Daftar";
+			$data['error'] = "";
 			$this->load->view("template/header", $data);
 			$this->load->view("daftar", $data);
 			$this->load->view("template/footer", $data);

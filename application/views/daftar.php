@@ -10,6 +10,7 @@
 					<span class="judul">Daftar</span>
 					<br/>
 
+					<?php echo $error ?>
 				</center>
 
 
