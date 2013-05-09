@@ -250,6 +250,57 @@
 		/*
 		 *  Action
 		 *
+		 *	Edit password
+		 */
+		public function edit_pass(){
+
+			//mengecek login
+			if ($this->session->userdata('LOGGED_IN')) {
+				$username = $this->session->userdata("username");
+
+				$datauser = $this->user_model->select_user($username);
+
+				$data['username'] = $username;
+
+				//data edit
+				$pass_lama = $this->input->post('pass_lama');
+				$pass_baru1 = $this->input->post('pass_baru1');
+				$pass_baru2 = $this->input->post('pass_baru2');
+
+
+				$data['error'] = "";
+
+				//cek pass lama sama
+				if ($this->user_model->cek_username_password($username, $pass_lama)) {
+					//cek pass baru 1 dan 2 sama
+					if ($pass_baru1 == $pass_baru2) {
+						$this->user_model->ganti_password($username, $pass_baru1);
+						$data['error'] = "Password telah diedit";
+					}else{
+						$data['error'] = "Password baru harus sama keduanya";
+					}	
+				}else{
+					$data['error'] = "Password lama tidak benar";
+				}
+								
+				//data yang ditampilkan di halaman edit
+				$data_pengguna = $this->user_model->select_user($username);
+
+				$data['bio'] = $data_pengguna->bio;
+
+				$this->load->view("template/header", $data);
+				$this->load->view("template/header_bar", $data);
+				$this->load->view("edit_user", $data);
+				$this->load->view("template/footer", $data);
+				
+
+			}
+		}
+
+
+		/*
+		 *  Action
+		 *
 		 *	Tambah teman
 		 */
 		public function add_friend(){

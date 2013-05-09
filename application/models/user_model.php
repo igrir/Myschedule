@@ -48,7 +48,7 @@ class user_model extends CI_Model{
 	//ganti password
 	function ganti_password($username, $password){
 		$this->db->where('username', $username);
-		$this->db_update('user', array('password'=>$password));
+		$this->db->update('user', array('password'=>$password));
 	}
 }
 ?>

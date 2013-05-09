@@ -32,13 +32,13 @@
 						<input type="submit" class="input-button" value="Edit gambar"/>
 					</form>
 					<hr/>
-					<form>
+					<form action="<?php echo base_url()?>index.php/user/edit_pass" method="POST">
 						<span class="abu">Password lama</span><br/>
-						<input type="text" class="input-form"/><br/>
+						<input type="password" class="input-form" name="pass_lama"/><br/>
 						<span class="abu">Password baru</span><br/>
-						<input type="text" class="input-form"/><br/>
+						<input type="password" class="input-form" name="pass_baru1"/><br/>
 						<span class="abu">Password baru</span><br/>
-						<input type="text" class="input-form"/><br/>
+						<input type="password" class="input-form" name="pass_baru2"/><br/>
 
 						<input type="submit" class="input-button" value="Edit password"/>
 					</form>
