@@ -147,6 +147,28 @@ class jadwal extends CI_Controller {
 		}
 	}
 
+	/*
+	 *  ACTION
+	 *
+	 *	Hapus jadwal
+	 */
+	public function hapus_jadwal(){
+
+		//mengecek login
+		if ($this->session->userdata('LOGGED_IN')) {
+			$username = $this->session->userdata("username");
+			$data['username'] = $username;
+
+			$data_user = $this->user_model->select_user($username);
+
+			$id_jadwal = $this->input->post('id_jadwal');
+
+			$this->jadwal_model->hapus_jadwal($id_jadwal);
+
+			redirect('user');
+		}
+	}
+
 
 }
 

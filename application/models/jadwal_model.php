@@ -32,8 +32,9 @@ class jadwal_model extends CI_Model{
 	}
 	
 	//hapus jadwal
-	function hapus_jadwal($data){
-		$query = $this->db->delete('jadwal',$data);
+	function hapus_jadwal($id_jadwal){
+		$query = $this->db->delete('jadwal',array('id_jadwal' => $id_jadwal));
+		return $query;
 	}
 
 }

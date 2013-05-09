@@ -37,6 +37,11 @@
 						<input type="hidden" name="id_jadwal" value="<?php echo $id_jadwal?>"/>
 						<input type="submit" class="input-button" value="Edit jadwal"/>
 					</form>
+					
+					<form action="<?php echo base_url()?>index.php/jadwal/hapus_jadwal" method="POST">
+						<input type="hidden" name="id_jadwal" value="<?php echo $id_jadwal?>"/>
+						<input type="submit" class="input-button" value="Hapus jadwal"/>
+					</form>
 
 				</div>
 				
