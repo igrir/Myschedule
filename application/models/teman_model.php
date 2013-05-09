@@ -15,13 +15,19 @@ class teman_model extends CI_Model{
 		return $query;
 	}
 
+	//menghapus teman
+	function delete_teman($uid1, $uid2){
+		$query = $this->db->delete('teman', array('uid_1'=>$uid1, 'uid_2'=>$uid2));
+		return $query;
+	}
+
 	//mengecek apakah $uid1 sudah berteman dengan $uid2
 	function is_teman($uid1, $uid2){
 		$query = $this->db->get_where('teman', array('uid_1'=>$uid1, 'uid_2'=>$uid2));
 
 		$result = $query->num_rows();
 
-		if ($result == 1) {
+		if ($result >= 1) {
 			return true;
 		}else{
 			return false;

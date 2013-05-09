@@ -27,6 +27,10 @@
 							?>
 							<a href="<?php echo base_url()?>index.php/user/add_friend/<?php echo $dat_username?>" class="teman-button">+teman</a>
 						<?php
+							}else{ ?>
+							<a href="<?php echo base_url()?>index.php/user/del_friend/<?php echo $dat_username?>" class="unteman-button info2">teman <span>Hapus Teman</span></a>
+
+						<?php
 							}
 						}
 						?>

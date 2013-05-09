@@ -199,11 +199,60 @@ a.info:hover span{ /*the span will display just on :hover state*/
 	opacity: 0.8;
 }
 
+a.info2{
+	position: relative;
+	z-index: 24;
+	background-color: #e0e0e0;
+	color: #000;
+	text-decoration: none;
+	border: none;
+}
+
+a.info2:hover{
+	z-index: 25;
+}
+
+a.info2 span{
+	display: none;
+}
+
+a.info2:hover span{ /*the span will display just on :hover state*/
+	display:block;
+	position:absolute;
+	bottom: 1.5em;
+	background-color:#df0000; /* background colour here */
+	color:#fff;         /* text colour */
+	text-align: center;
+	font-size: 1em;
+	z-index:30;
+	padding: 3px;
+	opacity: 0.8;
+	width: 100px;
+}
+
 .teman-button{
 	background-color: #fff;
 	font-size: 13px;
 	border-radius: 3px;
 	text-decoration: none;
+}
+
+.unteman-button{
+	background-color: #fff;
+	font-size: 13px;
+	border-radius: 3px;
+	text-decoration: none;
+	opacity: 0.5;
+	color: #e0e0e0;
+}
+
+.unteman-button:hover{
+	background-color: #df0000;
+	font-size: 13px;
+	border-radius: 3px;
+	text-decoration: none;
+	color: #fff;
+	opacity: 1;
 }
 
 #header-bar{

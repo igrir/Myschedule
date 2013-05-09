@@ -270,11 +270,35 @@
 
 			}
 		}
+
+		/*
+		 *  Action
+		 *
+		 *	hapus teman
+		 */
+		public function del_friend(){
+			$friend_username = $this->uri->segment(3);
+
+			//mengecek login
+			if ($this->session->userdata('LOGGED_IN')) {
+				$username = $this->session->userdata("username");
+				$datauser = $this->user_model->select_user($username);
+
+				$friend_datauser = $this->user_model->select_user($friend_username);
+				
+				$query = $this->teman_model->delete_teman($datauser->user_id, $friend_datauser->user_id);
+
+				if ($query) {
+					redirect("user/u/".$friend_username);
+				}
+
+			}
+		}
 		
 		//to do logout process
 		function logout() {
 			$this->session->sess_destroy();
-			$data['error'] = 'You have been logged out.';
+			$data['error'] = 'Anda telah keluar.';
 			$this->load->view("template/header", $data);
 			$this->load->view('login', $data);
 			$this->load->view("template/footer", $data);
