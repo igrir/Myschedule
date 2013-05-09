@@ -13,9 +13,11 @@ class jadwal_model extends CI_Model{
 	
 	//menambah jadwal baru
 	function insert_jadwal($data){
-		$this->db->insert('jadwal', $data);
+		$query = $this->db->insert('jadwal', $data);
+
+		return $query;
 	}
-	
+
 	//edit jadwal
 	function edit_jadwal($id_jadwal){
 		$this->db->where('id_jadwal', $id_jadwal);

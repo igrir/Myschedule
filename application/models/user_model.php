@@ -27,7 +27,7 @@ class user_model extends CI_Model{
 	
 	
 	function select_user($username){
-		$this->db->select('username, bio');
+		$this->db->select('user_id, username, bio');
 		$query = $this->db->get_where('user', array('username' => $username));
 		return $query->row();
 	}
