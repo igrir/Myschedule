@@ -234,3 +234,7 @@ a.info:hover span{ /*the span will display just on :hover state*/
 	background-color: #000;
 	color: #fff;
 }
+
+.alert{
+	color: #df0000;
+}

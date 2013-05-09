@@ -7,9 +7,11 @@
 
 					<img src="<?php echo base_url()?>img/logo.png"/>
 					<br/><br/>
-				
+
 					<span class="judul">Edit user</span>
 					<br/>
+					<br/>
+					<span class="alert"><?php echo $error ?></span><br/>
 
 				</center>
 

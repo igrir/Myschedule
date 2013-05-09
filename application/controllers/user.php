@@ -11,6 +11,7 @@
 			$this->load->model('user_model');
 			$this->load->library('session');
 			$this->load->model('jadwal_model');
+			$this->load->model('teman_model');
 		}
 
 		public function login(){
@@ -56,81 +57,10 @@
 		 *	Halaman utama user (Jadwal dari user berada di sini)
 		 */
 		public function index(){
-			$data['title'] = "Jadwal";
+			$username = $this->session->userdata("username");
 
-			//mengecek login
-			if ($this->session->userdata('LOGGED_IN')) {
+			redirect('user/u/'.$username);
 
-				$username = $this->session->userdata("username");
-				$data_user = $this->user_model->select_user($username);
-				
-				$data['username'] = $data_user->username;
-				$data['dat_username'] = $data_user->username;
-				$data['dat_bio'] = $data_user->bio;
-
-				$data['jadwal_senin'] = "";
-				$data['jadwal_selasa'] = "";
-				$data['jadwal_rabu'] = "";
-				$data['jadwal_kamis'] = "";
-				$data['jadwal_jumat'] = "";
-				$data['jadwal_sabtu'] = "";
-				$data['jadwal_minggu'] = "";
-
-				foreach($this->jadwal_model->select_by_user($data_user->user_id) as $data_jadwal){
-					$j_nama = $data_jadwal->nama_jadwal;
-					$j_jam_mulai = $data_jadwal->jam_mulai;
-					$j_jam_akhir = $data_jadwal->jam_akhir;
-
-					$base_url = base_url();
-					$id_jadwal = $data_jadwal->id_jadwal;
-
-					$tampil_jadwal = "<div class='jadwal-content'>
-										<span class='jadwal-judul'>".$j_nama."</span><br/>
-										<span class='jadwal-waktu'>".$j_jam_mulai."-".$j_jam_akhir."</span><br/>
-										<span class='jadwal-menu'>
-												<a href='".$base_url."index.php/jadwal/edit/".$id_jadwal."'> edit </a>
-												| copy
-										</span>
-										<br/>
-									  </div>";
-
-					switch ($data_jadwal->hari) {
-						case 1:
-							$data['jadwal_senin'] .= $tampil_jadwal;
-							break;
-						case 2:
-							$data['jadwal_selasa'] .= $tampil_jadwal;
-							break;
-						case 3:
-							$data['jadwal_rabu'] .= $tampil_jadwal;
-							break;
-						case 4:
-							$data['jadwal_kamis'] .= $tampil_jadwal;
-							break;
-						case 5:
-							$data['jadwal_jumat'] .= $tampil_jadwal;
-							break;
-						case 6:
-							$data['jadwal_sabtu'] .= $tampil_jadwal;
-							break;
-						case 7:
-							$data['jadwal_minggu'] .= $tampil_jadwal;
-							break;
-					}
-
-				};
-
-				
-
-				$this->load->view("template/header", $data);
-				$this->load->view("template/header_bar", $data);
-				$this->load->view("jadwal", $data);
-				$this->load->view("template/footer", $data);
-			}else{
-				redirect('myschedule');
-			}
-
-			
 		}
 
 
@@ -172,17 +102,20 @@
 					$base_url = base_url();
 					$id_jadwal = $data_jadwal->id_jadwal;
 
-					$link_edit = "<a href='".$base_url."index.php/jadwal/edit/".$id_jadwal."'> edit </a>
-												| copy";
+					$link_edit = "<a href='".$base_url."index.php/jadwal/edit/".$id_jadwal."'> edit </a>";
+					$link_copy = "copy";
 
 					if ($dat_username != $this->session->userdata('username')) {
 						$link_edit = "";
+					}
+					if ($dat_username == $this->session->userdata('username')) {
+						$link_copy = "";
 					}
 
 					$tampil_jadwal = "<div class='jadwal-content'>
 										<span class='jadwal-judul'>".$j_nama."</span><br/>
 										<span class='jadwal-waktu'>".$j_jam_mulai."-".$j_jam_akhir."</span><br/>
-										<span class='jadwal-menu'>".$link_edit."												
+										<span class='jadwal-menu'>".$link_edit.$link_copy."												
 										</span>
 										<br/>
 									  </div>";
@@ -213,7 +146,24 @@
 
 				};
 
-				
+				$tampil_teman = "";
+
+				foreach($this->teman_model->select_teman_by_user($data_user->user_id) as $data_teman){
+
+					$userdata_teman = $this->user_model->select_user_by_id($data_teman->uid_2);
+
+					$username_teman = $userdata_teman->username;
+					$foto_teman = "ratna.jpg";
+					$link_teman = base_url()."index.php/user/u/".$username_teman;
+
+					$tampil_teman .= "<a class='info' href='$link_teman'>
+										<img src='".base_url()."photo/".$foto_teman."' width='40px' height='40px'/>
+										<span>".$username_teman."</span>
+									 </a>";
+
+				}
+
+				$data['teman'] = $tampil_teman;
 
 				$this->load->view("template/header", $data);
 				$this->load->view("template/header_bar", $data);
@@ -241,6 +191,7 @@
 		 */
 		public function edit(){
 			$data['title'] = "Edit user";
+			$data['error'] = "";
 
 			//mengecek login
 			if ($this->session->userdata('LOGGED_IN')) {
@@ -279,11 +230,46 @@
 
 				$this->user_model->simpan_update_user($datauser->user_id, array('bio'=>$bio));
 
-				redirect('user/edit');
+				
+
+				$data['error'] = "Bio telah diedit";
+				//data yang ditampilkan di halaman edit
+				$data_pengguna = $this->user_model->select_user($username);
+
+				$data['bio'] = $data_pengguna->bio;
+
+				$this->load->view("template/header", $data);
+				$this->load->view("template/header_bar", $data);
+				$this->load->view("edit_user", $data);
+				$this->load->view("template/footer", $data);
 
 			}
 		}
 
+
+		/*
+		 *  Action
+		 *
+		 *	Tambah teman
+		 */
+		public function add_friend(){
+			$friend_username = $this->uri->segment(3);
+
+			//mengecek login
+			if ($this->session->userdata('LOGGED_IN')) {
+				$username = $this->session->userdata("username");
+				$datauser = $this->user_model->select_user($username);
+
+				$friend_datauser = $this->user_model->select_user($friend_username);
+				
+				$query = $this->teman_model->insert_teman($datauser->user_id, $friend_datauser->user_id);
+
+				if ($query) {
+					redirect("user/u/".$friend_username);
+				}
+
+			}
+		}
 		
 		//to do logout process
 		function logout() {

@@ -32,6 +32,13 @@ class user_model extends CI_Model{
 		return $query->row();
 	}
 
+	function select_user_by_id($user_id){
+		$this->db->select('user_id, username, bio');
+		$query = $this->db->get_where('user', array('user_id' => $user_id));
+		return $query->row();
+	}
+
+
 	//update user
 	function simpan_update_user($user_id, $data){
 		$this->db->where('user_id', $user_id);

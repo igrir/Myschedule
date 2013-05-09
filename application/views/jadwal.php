@@ -12,7 +12,25 @@
 					
 					<div id="profil-kanan" class="kiri">
 
-						<div id="profil-username">@<?php echo $dat_username?> <a href="#" class="teman-button">+teman</a></div>
+						<div id="profil-username">@<?php echo $dat_username?>
+						
+						<?php
+
+
+						//cek bukan profil sendiri
+						if ($this->session->userdata('username') != $dat_username) {
+							//cek sudah pernah ditemani
+							$userdata1 = $this->user_model->select_user($this->session->userdata('username'));
+							$userdata2 = $this->user_model->select_user($dat_username);
+
+							if (! $this->teman_model->is_teman($userdata1->user_id, $userdata2->user_id) ) {
+							?>
+							<a href="<?php echo base_url()?>index.php/user/add_friend/<?php echo $dat_username?>" class="teman-button">+teman</a>
+						<?php
+							}
+						}
+						?>
+						</div>
 						<div id="profil-bio"><?php echo $dat_bio?></div>
 
 					</div>
@@ -118,11 +136,11 @@
 				</div>
 
 				<div id="friend-list">
-
-					<a class="info" href="#">
+					<?php echo $teman ?>
+					<!-- <a class="info" href="#">
 						<img src="<?php echo base_url()?>photo/ratna.jpg" width="40px" height="40px"/>
 						<span>@ratnaasri</span>
-					</a>
+					</a> -->
 					
 				</div>
 
