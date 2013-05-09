@@ -113,13 +113,13 @@ body{
 #jadwal-scroll{
 	width: 950px;
 	overflow-x: scroll;
-	min-height: 450px;
+	min-height: 50px;
 	box-shadow: 0px 1px 1px #000;
 }
 
 #jadwal-container{
 	width: 3000px;
-	min-height: 450px;
+	min-height: 50px;
 	background-image: url(../img/bg.png);
 }
 
