@@ -6,19 +6,36 @@
 
 					<div id="profil-kiri" class="kiri">
 						<div id="profil-photo">
-							<img src="<?php echo base_url()?>photo/ratna.jpg" width="80px" height="80px"/>
+							<?php echo $photo?>
 						</div>
 					</div>
 					
-					<div id="profil-kanan">
+					<div id="profil-kanan" class="kiri">
 
-						<div class="kiri">
+						<div id="profil-username">@<?php echo $dat_username?>
+						
+						<?php
 
-							<div id="profil-username">@RatnaAsri <a href="#" class="teman-button">+teman</a></div>
-							<div id="profil-bio">Ini Ratna. Studied Computer Science at Indonesia
-												 University of Education. Lives in Bandung</div>
 
+						//cek bukan profil sendiri
+						if ($this->session->userdata('username') != $dat_username) {
+							//cek sudah pernah ditemani
+							$userdata1 = $this->user_model->select_user($this->session->userdata('username'));
+							$userdata2 = $this->user_model->select_user($dat_username);
+
+							if (! $this->teman_model->is_teman($userdata1->user_id, $userdata2->user_id) ) {
+							?>
+							<a href="<?php echo base_url()?>index.php/user/add_friend/<?php echo $dat_username?>" class="teman-button">+teman</a>
+						<?php
+							}else{ ?>
+							<a href="<?php echo base_url()?>index.php/user/del_friend/<?php echo $dat_username?>" class="unteman-button info2">teman <span>Hapus Teman</span></a>
+
+						<?php
+							}
+						}
+						?>
 						</div>
+						<div id="profil-bio"><?php echo $dat_bio?></div>
 
 					</div>
 					
@@ -42,24 +59,9 @@
 								</span>
 							</div>
 
-							<div class="jadwal-content">
-								<span class="jadwal-judul">Pemrograman Internet</span><br/>
-								<span class="jadwal-waktu">08:00-09:00</span><br/>
-								<span class="jadwal-menu">edit | copy</span><br/>
-							</div>
+							<?php echo $jadwal_senin?>
 
-							<div class="jadwal-content">
-								<span class="jadwal-judul">Nonton Bareng Teman Teman di tempat makan</span><br/>
-								<span class="jadwal-waktu">08:00-09:00</span><br/>
-								<span class="jadwal-menu">edit | copy</span><br/>
-							</div>
-
-							<div class="jadwal-content">
-								<span class="jadwal-judul">Nonton Bareng</span><br/>
-								<span class="jadwal-waktu">08:00-09:00</span><br/>
-								<span class="jadwal-menu">edit | copy</span><br/>
-							</div>
-						</div>				
+						</div>		
 
 						<div class="jadwal-card">
 							<div class="judul-jadwal">
@@ -68,17 +70,7 @@
 								</span>
 							</div>
 
-							<div class="jadwal-content">
-								<span class="jadwal-judul">Pemrograman Internet</span><br/>
-								<span class="jadwal-waktu">08:00-09:00</span><br/>
-								<span class="jadwal-menu">edit | copy</span><br/>
-							</div>
-
-							<div class="jadwal-content">
-								<span class="jadwal-judul">Nonton Bareng</span><br/>
-								<span class="jadwal-waktu">08:00-09:00</span><br/>
-								<span class="jadwal-menu">edit | copy</span><br/>
-							</div>
+							<?php echo $jadwal_selasa?>
 
 						</div>		
 
@@ -89,19 +81,9 @@
 								</span>
 							</div>
 
-							<div class="jadwal-content">
-								<span class="jadwal-judul">Pemrograman Internet</span><br/>
-								<span class="jadwal-waktu">08:00-09:00</span><br/>
-								<span class="jadwal-menu">edit | copy</span><br/>
-							</div>
+							<?php echo $jadwal_rabu?>
 
-							<div class="jadwal-content">
-								<span class="jadwal-judul">Nonton Bareng</span><br/>
-								<span class="jadwal-waktu">08:00-09:00</span><br/>
-								<span class="jadwal-menu">edit | copy</span><br/>
-							</div>
-
-						</div>		
+						</div>	
 
 						<div class="jadwal-card">
 							<div class="judul-jadwal">
@@ -110,19 +92,9 @@
 								</span>
 							</div>
 
-							<div class="jadwal-content">
-								<span class="jadwal-judul">Pemrograman Internet</span><br/>
-								<span class="jadwal-waktu">08:00-09:00</span><br/>
-								<span class="jadwal-menu">edit | copy</span><br/>
-							</div>
+							<?php echo $jadwal_kamis?>
 
-							<div class="jadwal-content">
-								<span class="jadwal-judul">Nonton Bareng</span><br/>
-								<span class="jadwal-waktu">08:00-09:00</span><br/>
-								<span class="jadwal-menu">edit | copy</span><br/>
-							</div>
-
-						</div>		
+						</div>	
 
 						<div class="jadwal-card">
 							<div class="judul-jadwal">
@@ -131,19 +103,9 @@
 								</span>
 							</div>
 
-							<div class="jadwal-content">
-								<span class="jadwal-judul">Pemrograman Internet</span><br/>
-								<span class="jadwal-waktu">08:00-09:00</span><br/>
-								<span class="jadwal-menu">edit | copy</span><br/>
-							</div>
+							<?php echo $jadwal_jumat?>
 
-							<div class="jadwal-content">
-								<span class="jadwal-judul">Nonton Bareng</span><br/>
-								<span class="jadwal-waktu">08:00-09:00</span><br/>
-								<span class="jadwal-menu">edit | copy</span><br/>
-							</div>
-
-						</div>		
+						</div>	
 
 						<div class="jadwal-card">
 							<div class="judul-jadwal">
@@ -152,21 +114,9 @@
 								</span>
 							</div>
 
-							<div class="jadwal-content">
-								<span class="jadwal-judul">Pemrograman Internet</span><br/>
-								<span class="jadwal-waktu">08:00-09:00</span><br/>
-								<span class="jadwal-kategori">#kuliah</span><br/>
-								<span class="jadwal-menu">edit | copy</span><br/>
-							</div>
+							<?php echo $jadwal_sabtu?>
 
-							<div class="jadwal-content">
-								<span class="jadwal-judul">Nonton Bareng</span><br/>
-								<span class="jadwal-waktu">08:00-09:00</span><br/>
-								<span class="jadwal-kategori">#main</span><br/>
-								<span class="jadwal-menu">edit | copy</span><br/>
-							</div>
-
-						</div>		
+						</div>	
 
 						<div class="jadwal-card">
 							<div class="judul-jadwal">
@@ -175,20 +125,11 @@
 								</span>
 							</div>
 
-							<div class="jadwal-content">
-								<span class="jadwal-judul">Pemrograman Internet</span><br/>
-								<span class="jadwal-waktu">08:00-09:00</span><br/>
-								<span class="jadwal-menu">edit | copy</span><br/>
-							</div>
-
-							<div class="jadwal-content">
-								<span class="jadwal-judul">Nonton Bareng</span><br/>
-								<span class="jadwal-waktu">08:00-09:00</span><br/>
-								<span class="jadwal-menu">edit | copy</span><br/>
-							</div>
-
+							<?php echo $jadwal_minggu?>
 
 						</div>	
+
+
 
 						<div class="clear"></div>
 					</div> <!--jadwal container-->
@@ -199,11 +140,11 @@
 				</div>
 
 				<div id="friend-list">
-
-					<a class="info" href="#">
+					<?php echo $teman ?>
+					<!-- <a class="info" href="#">
 						<img src="<?php echo base_url()?>photo/ratna.jpg" width="40px" height="40px"/>
 						<span>@ratnaasri</span>
-					</a>
+					</a> -->
 					
 				</div>
 

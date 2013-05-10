@@ -113,13 +113,13 @@ body{
 #jadwal-scroll{
 	width: 950px;
 	overflow-x: scroll;
-	min-height: 450px;
+	min-height: 50px;
 	box-shadow: 0px 1px 1px #000;
 }
 
 #jadwal-container{
 	width: 3000px;
-	min-height: 450px;
+	min-height: 50px;
 	background-image: url(../img/bg.png);
 }
 
@@ -199,11 +199,60 @@ a.info:hover span{ /*the span will display just on :hover state*/
 	opacity: 0.8;
 }
 
+a.info2{
+	position: relative;
+	z-index: 24;
+	background-color: #e0e0e0;
+	color: #000;
+	text-decoration: none;
+	border: none;
+}
+
+a.info2:hover{
+	z-index: 25;
+}
+
+a.info2 span{
+	display: none;
+}
+
+a.info2:hover span{ /*the span will display just on :hover state*/
+	display:block;
+	position:absolute;
+	bottom: 1.5em;
+	background-color:#df0000; /* background colour here */
+	color:#fff;         /* text colour */
+	text-align: center;
+	font-size: 1em;
+	z-index:30;
+	padding: 3px;
+	opacity: 0.8;
+	width: 100px;
+}
+
 .teman-button{
 	background-color: #fff;
 	font-size: 13px;
 	border-radius: 3px;
 	text-decoration: none;
+}
+
+.unteman-button{
+	background-color: #fff;
+	font-size: 13px;
+	border-radius: 3px;
+	text-decoration: none;
+	opacity: 0.5;
+	color: #e0e0e0;
+}
+
+.unteman-button:hover{
+	background-color: #df0000;
+	font-size: 13px;
+	border-radius: 3px;
+	text-decoration: none;
+	color: #fff;
+	opacity: 1;
 }
 
 #header-bar{
@@ -212,13 +261,21 @@ a.info:hover span{ /*the span will display just on :hover state*/
 	background-color: #303030;
 }
 
-#header-content{
-	padding: 5px;
+#header-bar a{
+	display: inline-block;
+	background-color: #fff;
+	color: #000;
+	text-decoration: none;
+	padding: 2px 5px 2px 5px;
+}
+#header-bar a:hover{
+	background-color: #000;
 	color: #fff;
+	text-decoration: none;
 }
 
-#header-content a{
-	text-decoration: none;
+#header-content{
+	padding: 5px;
 	color: #fff;
 }
 
@@ -233,4 +290,8 @@ a.info:hover span{ /*the span will display just on :hover state*/
 .menu-jadwal a:hover{
 	background-color: #000;
 	color: #fff;
+}
+
+.alert{
+	color: #df0000;
 }

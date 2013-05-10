@@ -14,7 +14,9 @@
 				</center>
 
 
-				<div class="tengah">	
+				<div class="tengah">
+					<?php echo $error?>
+
 					<form method="POST" action="<?php echo base_url()?>index.php/user/login">
 						<span class="abu">Username</span><br/>
 						<input type="text" name="username" class="input-form"/><br/>
